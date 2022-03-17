@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>Shoes Mart</title>
+	<!-- custom-theme -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Downy Shoes Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	
+
+	<script type="text/javascript" src="/javascripts/jquery-2.1.4.min.js"></script>
+
+
+  <!-- admin Favicons -->
+  <link href="images/admin-img/favicon.png" rel="icon">
+  <link href="images/admin-img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!--admin Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!--admin Vendor CSS Files -->
+  <link href="/stylesheets/admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/stylesheets/admin/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/stylesheets/admin/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/stylesheets/admin/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/stylesheets/admin/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/stylesheets/admin/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/stylesheets/admin/vendor/simple-datatables/style.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/checkout.css">
+
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/creditly.css">
+  <!--admin Template Main CSS File -->
+  <link href="/stylesheets/admin/admin.css" rel="stylesheet">
+<!--end admin-->
+
+
+
+
+<script type="text/javascript" src="/javascripts/creditly.js"></script>
+
+<!--startadmin-->
+
+
+	<link rel="stylesheet" type="text/css" href="/stylesheets/jquery-ui1.css">
+	
+	<link href="//fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+	    rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+	<!-- //custom-theme -->
+	<link href="/stylesheets/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="/stylesheets/shop.css" type="text/css" media="screen" property="" />
+	<link href="/stylesheets/style7.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- font-awesome-icons -->
+
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"/>
+	<link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css"/>
+
+
+	<!-- //font-awesome-icons -->
+	<link href="//fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+	    rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<link href="/stylesheets/flexslider.css" rel="stylesheet">
+	<link href="/stylesheets/easy-responsive-tabs.css" rel="stylesheet">
+	
+	<link href="/stylesheets/font-awesome.css" rel="stylesheet">
+</head>
+
+  <body>
+ {{#if admin}}
+    {{>admin-header}}
+    {{/if}}
+
+    {{#if user}}
+    {{>user-header}}
+    {{/if}}
+	
+    {{{body}}}
+
+	{{#if footer}}
+	 {{>user-footer}}
+	 {{/if}}
+
+
+<script src="/javascripts/add-to-cart.js"></script>
+  
+    <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<!-- js -->
+	<!-- //js -->
+	<!-- /nav -->
+	<script src="/javascripts/modernizr-2.6.2.min.js"></script>
+	<script src="/javascripts/classie.js"></script>
+	<script src="/javascripts/demo1.js"></script>
+	<!-- //nav -->
+
+<script src="/javascripts/easy-responsive-tabs.js"></script>
+<script src="/javascripts/jquery.flexslider.js"></script>
+
+
+	<!-- cart-js -->
+	<script src="/javascripts/minicart.js"></script>
+	<script>
+		shoe.render();
+
+		shoe.cart.on('shoe_checkout', function (evt) {
+			var items, len, i;
+
+			if (this.subtotal() > 0) {
+				items = this.items();
+
+				for (i = 0, len = items.length; i < len; i++) {}
+			}
+		});
+	</script>
+	<!-- //cart-js -->
+	<!--search-bar-->
+	<script src="/javascripts/search.js"></script>
+	<!--//search-bar-->
+	<script src="/javascripts/responsiveslides.min.js"></script>
+	<script>
+		$(function () {
+			$("#slider4").responsiveSlides({
+				auto: true,
+				pager: true,
+				nav: true,
+				speed: 1000,
+				namespace: "callbacks",
+				before: function () {
+					$('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+					$('.events').append("<li>after event fired.</li>");
+				}
+			});
+		});
+	</script>
+	<!-- js for portfolio lightbox -->
+	<!-- start-smoth-scrolling -->
+	<script type="text/javascript" src="/javascripts/move-top.js"></script>
+	<script type="text/javascript" src="/javascripts/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!-- //end-smoth-scrolling -->
+
+	<script type="text/javascript" src="/javascripts/bootstrap-3.1.1.min.js"></script>
+
+{{!-- user name --}}
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<!--admin startjs-->
+
+	 <!-- Vendor JS Files -->
+  <script src="/stylesheets/admin/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/stylesheets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/stylesheets/admin/vendor/chart.js/chart.min.js"></script>
+  <script src="/stylesheets/admin/vendor/echarts/echarts.min.js"></script>
+  <script src="/stylesheets/admin/vendor/quill/quill.min.js"></script>
+  <script src="/stylesheets/admin/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/stylesheets/admin/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/stylesheets/admin/vendor/php-email-form/validate.js"></script>
+
+
+
+  <!-- Template Main JS File -->
+  	<link rel="stylesheet" href="/stylesheets/creditly.css" type="text/css" media="all" />
+  <script src="/javascripts/admin/admin.js"></script>
+
+
+
+
+
+   
+   
+
+
+    </body>
+  	<!--admin endjs-->
+</html>

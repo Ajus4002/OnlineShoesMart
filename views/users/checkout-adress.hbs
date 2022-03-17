@@ -1,0 +1,306 @@
+<!-- banner -->
+<div class="banner_top innerpage" id="home">
+    <div class="wrapper_top_w3layouts">
+        <div class="header_agileits">
+
+        </div>
+    </div>
+
+    <!-- //search -->
+    <div class="clearfix"></div>
+    <!-- /banner_inner -->
+    <div class="services-breadcrumb_w3ls_agileinfo">
+        <div class="inner_breadcrumb_agileits_w3">
+
+            <ul class="short">
+                <li><a href="index.html">Home</a><i>|</i></li>
+                <li>Check Out</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //banner_inner -->
+</div>
+  
+<!-- //banner -->
+<!-- top Products -->
+<div class="ads-grid_shop">
+    <div class="shop_inner_inf">
+        <div class="privacy about">
+            <h3>Check<span>out</span></h3>
+
+
+            <div class="row col-lg-6" style="background-color: aliceblue; ">
+                <div class="checkout-left">
+                    <div  class="col-md-9 checkout-left-basket">
+                        <h4>Continue to basket</h4>
+                        <ul>
+                            {{#each products}}
+                                <li>{{this.product.name}} <i>-</i> <span>${{this.total}} </span></li>
+                            {{/each}}
+                            
+                            <li>Total <i>-</i> <span id="total">{{ total }}</span></li>
+                            <li>coupon Discount <i>-</i> <span>{{couponDiscount}}</span></li>
+                            <li>Grand Total <i>-</i> <span>{{grandTotal}}</span></li>
+                        </ul>
+
+                        <div id="paymentType">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="cod" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Cash on Delivery
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="online">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Online Payment
+                                </label>
+                            </div>
+
+   <label class="form-check-label" for="flexRadioDefault2">
+                                    Wallet Amount
+                                </label>
+                            <input type="number" style="width: 60%; mar" min="1" max="100"  class="form-control input-group date"  name="wallet_amount" id="wallet-amount"
+                            placeholder="Amount">
+
+ <form action="/apply-coupon" method="post" style="margin-top: 60px; margin-left:20px">
+              <label class="control-label margin-top:50%">Applay coupon</label>
+                        <input type="text" style="width: 60%; mar"  class="form-control input-group date" value="{{#if coupon }}{{coupon.couponname}}{{/if}}"  name="coupon"
+                            placeholder="Enter new Coupon Name">
+
+    <button class="mt-3 but btn btn-secondary" type="submit ">Apply</button>
+        </form>
+
+
+                        </div>
+
+                    </div>
+                    <div class="clearfix"> </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+     <div class="col-lg-6" style="border: black;background-color:#07b39b;margin-left: 30px;pading:20px">
+         <h4 style="padding: 14px;"><i>Wallet Balanse (${{user.walletAmount}})</i></h4>
+     </div>
+
+        <ul class="col-lg-6" style="  list-style-type: none; ">
+            <li class="mb-5"><a href="/add-address/{{this._id}}">	<input type="submit"  name="submit" value="Add New Address" class="button add"style="margin-left: 30px;"></a>
+            <li id="addresses" style="margin-left: 30px;">
+                {{#each address}}
+                    <div class="gradient-border mb-5" id="box">
+                        <input type="radio" value="{{this._id}}" id="f-option" name="selector">
+                        <label for="f-option"></label>
+                        <br><br>{{this.name}}<br>{{this.town}}<br>{{this.landmark}}<br>{{this.addressType}}
+                          <input type="button" name="submit" value="Place Order" class="button add" onclick="submitOrder()">
+                    </div>
+                {{/each}}
+            </li>
+{{!-- 
+            <li class="mb-5">
+                <input type="button" name="submit" value="Place Order" class="button add" onclick="submitOrder()">
+            </li> --}}
+        </ul>
+        <div style="margin-top: 70%;"></div>
+
+     </div>  
+</div>
+
+
+	<script>
+
+				function submitOrder() {
+				swal({
+  title: "Whoo Hooo!"<br>"Order Placed",
+ 
+  icon: "success",
+  button: "Aww yiss!",
+});
+
+ 
+}
+			</script>
+
+
+<script>
+    function submitOrder(e) {
+        var val = $('#addresses input[type=radio]:checked').val();
+        if (!val) {
+            alert('Please select address');
+            return;
+        }
+
+        var order = {
+            address: val,
+            paymentType: $('#paymentType input[type=radio]:checked').val(),
+            walletAmount: $('#wallet-amount').val()
+        }
+
+        $.post('/place-order', order, function (data) {
+            if (data['success']) {
+                if (!data['payment']) {
+                   
+                    location.href = '/success'
+                } else {
+                    paynow(data['order'], data['payment'], data['user'])
+                }
+            } else {
+                alert("Something went wrong")
+            }
+        }, 'json')
+    }
+</script>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+    function paynow(order, payment, user) {
+        const options = {
+            "key": "rzp_test_vgT5Uko4iBzDgk",
+            "amount": payment.amount_due,
+            "currency": payment.currency,
+            "name": "Shoes Mart",
+            "description": "Shoes Mart Purchase",
+            "order_id": payment.id,
+            "handler": function (response) {
+                console.log(response)
+                $.post(`/order/paynow`, response, function (data) {
+                    if (data['success']) {
+                        alert("Payment Success")
+                        location.href = '/success'
+                    } else {
+                        alert("Something went wrong")
+                    }
+                }, 'json')
+            },
+            "prefill": {
+                "name": user.firstName,
+                "email": user.email,
+                "contact": user.phoneNo
+            },
+            readonly: {
+                contact: true,
+                email: true,
+                name: true
+            },
+            "theme": {
+                "color": "#fb383b"
+            }
+        };
+
+        var rzp1 = new Razorpay(options);
+        rzp1.on('payment.failed', function (response) {
+            console.log(response.error)
+            alert("Payment Failed");
+        });
+        rzp1.open();
+    }
+</script>
+
+<style>
+    #box {
+        align-items: center;
+        width: 349px;
+        height: 158px;
+        color: rgb(7, 7, 7);
+        font-family: 'Raleway';
+        font-size: 1.5rem;
+        padding: 5px 0 0 15px;
+        background-color:teal;
+        color:white;
+    }
+    .gradient-border {
+        --borderWidth: 3px;
+        background: #FFFFFA;
+        position: relative;
+        border-radius: var(--borderWidth);
+    }
+    .gradient-border:after {
+        content: '';
+        position: absolute;
+        top: calc(-1 * var(--borderWidth));
+        left: calc(-1 * var(--borderWidth));
+        height: calc(100% + var(--borderWidth) * 2);
+        width: calc(100% + var(--borderWidth) * 2);
+        background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+        border-radius: calc(2 * var(--borderWidth));
+        z-index: -1;
+        animation: animatedgradient 3s ease alternate infinite;
+        background-size: 300% 300%;
+    }
+
+
+    @keyframes animatedgradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+
+
+</style>
+
+
+
+
+<script>
+    $('.value-plus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+                newVal = parseInt(divUpd.text(), 10) + 1;
+        divUpd.text(newVal);
+    });
+
+    $('.value-minus').on('click', function () {
+        var divUpd = $(this).parent().find('.value'),
+                newVal = parseInt(divUpd.text(), 10) - 1;
+        if (newVal >= 1) divUpd.text(newVal);
+    });
+</script>
+<!--quantity-->
+<script>
+    $(document).ready(function (c) {
+        $('.close1').on('click', function (c) {
+            $('.rem1').fadeOut('slow', function (c) {
+                $('.rem1').remove();
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (c) {
+        $('.close2').on('click', function (c) {
+            $('.rem2').fadeOut('slow', function (c) {
+                $('.rem2').remove();
+            });
+        });
+    });
+</script>
+<script>
+    $(document).ready(function (c) {
+        $('.close3').on('click', function (c) {
+            $('.rem3').fadeOut('slow', function (c) {
+                $('.rem3').remove();
+            });
+        });
+    });
+</script>
+<script>
+    $("#chadress").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:'/place-order',
+            method:'post',
+            data:$("#chadress").serialize,
+            success:(Response)=>{
+                alert(Response)
+            }
+        })
+    })
+</script>

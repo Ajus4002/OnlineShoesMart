@@ -1,0 +1,84 @@
+<style>
+    .category {
+
+        margin-left: 350px;
+        margin-top: 150px;
+
+    }
+</style>
+<div class="col-md-8 address_form category">
+    <h4>Add a new Coupon</h4>
+    <form action="/admin/coupon" method="post" class="creditly-card-form agileinfo_form">
+        <section class="creditly-wrapper wrapper">
+            <div class="information-wrapper">
+                <div class="first-row form-group">
+
+                    <div class="controls">
+                        <label class="control-label">Coupon Name</label>
+                        <input type="text" class="form-control" id="category" name="couponname"
+                            placeholder="Enter new Coupon Name">
+                    </div>
+                    <div class="controls">
+                        <label class="control-label">Add Discount</label>
+                        <input type="text" class="form-control" id="category" name="discount"
+                            placeholder="Enter Discount">
+                    </div>
+
+                    <div class="controls">
+                        <label class="control-label">Expiry Date</label>
+                        <input type="date" class="form-control input-group date" id="datepicker " name="expdate"
+                            placeholder="Enter new Coupon Name">
+                    </div>
+
+
+                </div>
+                <button class="submit check_out">Add Coupon</button>
+            </div>
+        </section>
+    </form>
+    {{!-- <div class="checkout-right-basket">
+        <a href="payment.html">Make a Payment </a>
+    </div> --}}
+</div>
+<script>
+   $(function(){
+  $('#datepicker').datepicker();
+}); 
+</script>
+
+<!-- Recent Sales -->
+<div class="col-8 " style="margin-left:25%;margin-top:40%">
+    <div class="card recent-sales overflow-auto">
+
+
+        <div class="card-body">
+            <h5 class="card-title">Coupon <span>| Today</span></h5>
+
+            <table class="table table-borderless ">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Discount</th>
+                        <th scope="col">Expiry</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each coupon}}
+                    <tr>
+                        <th scope="row"><a href="#">{{@index}}</a></th>
+                        <td>{{this.couponname}}</td>
+                        <td><a href="#" class="text-primary">{{this.discount}}%</a></td>
+                        <td>{{this.expdate}}</td>
+                       <td>  <a href="/admin/delete-coupon/{{this._id}}" class="btn btn-danger fas fa-trash" onclick="return confirm('Do you want to delete{{this.name}}?')"></a>
+                    
+                    </tr>
+{{/each}}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div><!-- End Recent Sales -->

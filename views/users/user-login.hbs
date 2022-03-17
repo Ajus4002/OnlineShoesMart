@@ -1,0 +1,152 @@
+<!--userlogin-->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+	<link href="stylesheets/user-login.css" rel="stylesheet">
+   <!--end user login-->
+<div class="container white z-depth-2">
+	<ul class="tabs teal">
+		<li class="tab col s3"><a class="white-text active" href="#login">login</a></li>
+		<li class="tab col s3"><a class="white-text" href="#register">register</a></li>
+	</ul>
+	<div id="login" class="col s12">
+		<form class="col s12" id="login-form">
+			<div class="form-container">
+				<h3 class="teal-text">Hello</h3>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="email" type="text" class="validate" name="phoneNo">
+						<label for="email">Phone</label>
+					</div>
+				</div>
+				<br>
+				<center>
+					<button class="btn waves-effect waves-light teal" type="submit" name="action">Connect</button>
+					<br>
+					<br>
+					<a href="">Forgotten password?</a>
+				</center>
+			</div>
+		</form>
+	</div>
+	<div id="register" class="col s12">
+		<form class="col s12" id="register-form">
+			<div class="form-container">
+				<h3 class="teal-text">Welcome</h3>
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="last_name" type="text" class="validate" name="firstName" required>
+						<label for="last_name">First Name</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="last_name" type="text" class="validate" name="lastName" required>
+						<label for="last_name">Last Name</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="email" type="email" class="validate" name="email" required>
+						<label for="email">Email</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="email-confirm" type="text" class="validate" name="phoneNo" required>
+						<label for="Number">Phone Number</label>
+					</div>
+				</div>
+
+				<center>
+					<button class="btn waves-effect waves-light teal" type="submit" name="action">Submit</button>
+				</center>
+			</div>
+		</form>
+	</div>
+    <div id="phone-sign-in-recaptcha"></div>
+</div>
+<!--user login-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+<!-- Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-app.js"></script>
+<!-- Add additional services you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.0.1/firebase-auth.js"></script>
+<!--end user login-->
+
+<script>
+    var config = {
+        apiKey: "AIzaSyCMfKJvXjAY-OL8RQboaeqTNAoiuc9JeuM",
+        authDomain: "shoes-c2264.firebaseapp.com",
+        projectId: "shoes-c2264",
+        storageBucket: "shoes-c2264.appspot.com",
+        messagingSenderId: "450343888269",
+        messagingSenderId: "9544435814",
+        appId: "1:450343888269:web:bf1c24c8b979bc24eb09c4"
+    };
+    firebase.initializeApp(config);
+
+			window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('phone-sign-in-recaptcha', {
+			'size': 'invisible',
+			'callback': (response) => {
+
+			},
+            'expired-callback': () => {
+            }
+
+        });
+</script>
+
+<script>
+	$('#register-form').on('submit', function(e) {
+		e.preventDefault();
+
+		sendOtp($(this).find('[name=phoneNo]').val(), () => {
+			$.post('user-register', $(this).serialize(), function(data) {
+				if (data['success']) {
+					location.href = '/'
+				} else {
+					alert(data['message'])
+				}
+			}, 'json')
+		})
+	})
+
+	$('#login-form').on('submit', function(e) {
+		e.preventDefault();
+
+		sendOtp($(this).find('[name=phoneNo]').val(), () => {
+			$.post('user-login', $(this).serialize(), function(data) {
+				if (data['success']) {
+					location.href = '/'
+				} else {
+					alert(data['message'])
+				}
+			}, 'json')
+		})
+	})
+</script>
+
+<script>
+	function sendOtp(phoneNumber, cb) {
+		
+		phoneNumber = phoneNumber.startsWith('+91') ? phoneNumber : '+91' + phoneNumber
+        const appVerifier = window.recaptchaVerifier;
+        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+                .then((confirmationResult) => {
+                    window.confirmationResult = confirmationResult;
+
+                    verifyOtp(prompt("Enter otp"), cb)
+                }).catch((error) => {
+            console.log(error)
+            alert('error')
+        });
+	}
+
+	function verifyOtp(code, cb) {
+		confirmationResult.confirm(code).then((result) => {
+			cb()
+		}).catch((error) => {
+			alert("Invalid Otp")
+		});
+	}
+
+</script>

@@ -1,0 +1,160 @@
+
+<!-- banner -->
+ <div class="banner_top innerpage" id="home">
+		<div class="wrapper_top_w3layouts">
+			 <div class="header_agileits">
+				
+			</div>
+		</div>
+		
+		<!-- //search -->
+		<div class="clearfix"></div> 
+		<!-- /banner_inner -->
+		<div class="services-breadcrumb_w3ls_agileinfo">
+			<div class="inner_breadcrumb_agileits_w3">
+
+				<ul class="short">
+					<li><a href="index.html">Home</a><i>|</i></li>
+					<li>Shop</li>
+				</ul>
+			</div>
+		</div>
+		<!-- //banner_inner -->
+	</div>
+
+
+<div class="container">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                
+                <div class="card mt-5" >
+                    <ul class="list-group list-group-flush" >
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <a href="/profile-page">My Profile</a>
+                            
+                        </li>
+                     
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <a href="/address-show-page">Address</a>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <a href="/orders">Orders</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                {{#each address}}
+                <div class="card1 mb-3">
+                    <div class="card-body" style="border:solid rgb(231, 40, 40); border-radius: 10px;">
+                        <div class="row">
+                            <div class="col-sm-3">
+                              
+                            </div>
+                            <div class="col-sm-9 ttx text-secondary">
+                                {{this.name}} 
+                            </div>
+                        </div>
+                      
+                        <div class="row">
+                            <div class="col-sm-3">
+                                
+                            </div>
+                            <div class="col-sm-9 ttx text-secondary">
+                               {{this.town}}
+                            </div>
+                        </div>
+                       
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0"></h6>
+                            </div>
+                            <div class="col-sm-9 ttx text-secondary">
+                              {{this.landmark}}</span> /{{this.addressType}}
+                            </div>
+                        </div>
+                    
+                      
+                        
+                     
+                      
+                        <div class="row">
+                            <div class="col-sm-12">
+                                   <a class="btn btn-info  "onclick="two();" href="/deleteuser-address/{{this._id}}" style="margin-top: 40px;">Delete</a>
+                                <a class="btn btn-info  " href="/edit-address/{{this._id}}" style="margin-left: 55%; margin-top:-57px">Make any Change</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+</div>
+	<script>
+
+				function two() {
+				swal({
+  title: "Address Deleted!",
+ 
+  icon: "success",
+  button: "Aww yiss!",
+});
+
+ 
+}
+			</script>
+
+<style>
+    
+    body{
+    color: #1a202c;
+    text-align: left;
+    background-color: #afaeaf; 
+    }
+.main-body {
+    padding: 15px;
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    border-radius: 80px;
+    background-color: #fff;
+    background-clip: border-box;
+   
+    border-radius: 20px;
+}
+
+.card1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    width: 410px;
+  
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(233, 30, 30, 0.125);
+    border-radius: 1rem;
+}
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+.ttx{
+    text-align:;
+    font-size: 20px;
+    margin-left: 20px;
+}
+</style>

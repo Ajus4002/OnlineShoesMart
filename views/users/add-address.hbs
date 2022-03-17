@@ -1,0 +1,146 @@
+<!-- banner -->
+<div class="banner_top innerpage" id="home">
+	<div class="wrapper_top_w3layouts">
+		<div class="header_agileits">
+
+		</div>
+	</div>
+
+	<!-- //search -->
+	<div class="clearfix"></div>
+	<!-- /banner_inner -->
+	<div class="services-breadcrumb_w3ls_agileinfo">
+		<div class="inner_breadcrumb_agileits_w3">
+
+			<ul class="short">
+				<li><a href="index.html">Home</a><i>|</i></li>
+				<li>Check Out</li>
+			</ul>
+		</div>
+	</div>
+	<!-- //banner_inner -->
+</div>
+
+<!-- //banner -->
+<!-- top Products -->
+
+
+</div>
+<div class="container">
+	<div class="col-md-8 address_form">
+		<h4>Add a new Details</h4>
+		<form action="/add-address" id="" method="post" class="creditly-card-form agileinfo_form" >
+			<section class="creditly-wrapper wrapper">
+				<div class="information-wrapper">
+					<div class="first-row form-group">
+						<div class="controls">
+							<label class="control-label">Full name: </label>
+							<input class="billing-address-name form-control" type="text" name="name"
+								placeholder="Full name">
+						</div>
+						 <input type="text" name="userId" id="" value="{{user._id}}" hidden>
+						<div class="card_number_grids">
+							<div class="card_number_grid_left">
+								<div class="controls">
+									<label class="control-label">Mobile number:</label>
+									<input class="form-control" type="text" name="mobile" placeholder="Mobile number">
+								</div>
+							</div>
+							<div class="card_number_grid_right">
+								<div class="controls">
+									<label class="control-label">Landmark: </label>
+									<input class="form-control" type="text" name="landmark" placeholder="Landmark">
+								</div>
+							</div>
+							<div class="clear"> </div>
+						</div>
+						<div class="controls">
+							<label class="control-label">Address/Town/City: </label>
+							<input class="form-control" type="text" placeholder="Address/Town/City" name="town">
+						</div>
+						<div class="controls">
+							<label class="control-label">Zip-code </label>
+							<input class="form-control" type="text" placeholder="zip-code" name="town">
+						</div>
+						<div class="controls">
+							<label class="control-label">Address type: </label>
+							<select class="form-control option-w3ls" name="addressType">
+								<option>Office</option>
+								<option>Home</option>
+								<option>Commercial</option>
+
+							</select>
+						</div>
+					</div>
+					<button type="submit" class="submit check_out" id="btn-submit">Delivery to this Address</button>
+				</div>
+			</section>
+		</form>
+		{{!-- <div class="checkout-right-basket">
+			<a href="payment.html">Make a Payment </a>
+		</div> --}}
+	</div>
+
+	<div class="clearfix"> </div>
+
+
+	<div class="clearfix"></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+	$('.value-plus').on('click', function () {
+		var divUpd = $(this).parent().find('.value'),
+			newVal = parseInt(divUpd.text(), 10) + 1;
+		divUpd.text(newVal);
+	});
+
+	$('.value-minus').on('click', function () {
+		var divUpd = $(this).parent().find('.value'),
+			newVal = parseInt(divUpd.text(), 10) - 1;
+		if (newVal >= 1) divUpd.text(newVal);
+	});
+</script>
+<!--quantity-->
+<script>
+	$(document).ready(function (c) {
+		$('.close1').on('click', function (c) {
+			$('.rem1').fadeOut('slow', function (c) {
+				$('.rem1').remove();
+			});
+		});
+	});
+</script>
+<script>
+	$(document).ready(function (c) {
+		$('.close2').on('click', function (c) {
+			$('.rem2').fadeOut('slow', function (c) {
+				$('.rem2').remove();
+			});
+		});
+	});
+</script>
+<script>
+	$(document).ready(function (c) {
+		$('.close3').on('click', function (c) {
+			$('.rem3').fadeOut('slow', function (c) {
+				$('.rem3').remove();
+			});
+		});
+	});
+</script>
+<script>
+	$("#chadress").submit((e) => {
+		
+		e.preventDefault()
+		$.ajax({
+			url: '/add-address',
+			method: 'post',
+			data: $("#chadress").serialize(),
+			success: (Response) => {
+				alert(Response)
+			}
+		})
+	})
+</script>
