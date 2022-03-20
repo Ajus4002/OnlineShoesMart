@@ -8,7 +8,8 @@ const userHelper = require('../helpers/user-helper');
 const { USER_COLLECTION } = require('../config/collections');
 const session = require('express-session');
 const addressHelpers = require('../helpers/address-helpers');
-var couponHelpers=require('../helpers/coupon-helper')
+var couponHelpers=require('../helpers/coupon-helper');
+const { query } = require('express');
 /* GET home page. */
 const verifyLogin=(req,res,next)=>{
   if(req.session.isLoggedIn){
@@ -34,10 +35,35 @@ router.get('/',async function(req, res, next) {
 
 });
 
-router.get('/shop',function(req,res){
-  productHelpers.getAllProducts().then((product) => {
-    res.render('users/shop',{footer:true, user:true, product, auth: req.session.user})
-  })
+router.get('/shop', async function(req,res){
+  const query = {}
+  if (req.query.c) {
+    query['category._id'] = ObjectId(req.query.c)
+  }
+
+  let searchQuery = req.query.q
+  if (req.query.q) {
+    query['name'] = {$regex: RegExp('^' + req.query.q, 'i')}
+  }
+
+  const product = await productHelpers.getAllProducts(true, query)
+//coupon namme
+let showcoupon  = await db.get().collection('coupon').findOne()
+console.log(showcoupon);
+
+  let wishList = []
+
+  if (req.session.user) {
+    let wishList = await userHelper.getWishlist(req.session.user._id)
+
+    product.forEach(pro => {
+      pro.isInWishList = wishList.find(v => v._id.toString() == pro._id.toString()) != null
+    })
+  }
+
+
+  const category = await db.get().collection('category').find().toArray()
+  res.render('users/shop',{footer:true, user:true, product, auth: req.session.user, category, searchQuery,showcoupon })
 });
 
 
@@ -142,7 +168,7 @@ router.get('/orders', verifyLogin, async function(req, res, next) {
       item.total = item.quantity * item.product.price
     })
   })
-
+  console.log(orders);
   res.render('users/order-management',{user:true, footer: true, orders})
 });
 
@@ -342,31 +368,38 @@ router.get('/deleteuser-address/:id',(req,res)=>{
 
 //success
 router.get('/success',(req,res)=>{
-  res.render('users/success')
+  res.render('users/success',{footer:true,user:true})
+})
+
+//whish list
+router.get('/add-wishlist/:id',(req,res)=>{
+  let proId=req.params.id;
+  let userId=req.session.user._id;
+  userHelper.addToWishlist(proId,userId).then((response)=>{
+    res.redirect('/shop')
+  })
 })
 
 
+router.get('/whishlist',async(req,res)=>{
+  let userId=req.session.user._id
+  let user=req.session.user
+  let cat=req.session.cat
+  carCount=null
+  cartCount= await userHelper.getCartCount(req.session.user._id)
+  userHelper.getWishlist(userId).then((products)=>{
+ 
+    res.render('users/whishlist',{head:true,cat,footer:true,products,user,cartCount})
+  })
+})
 
-//add profile photo
+router.get('/remove-wishlist',(req,res)=>{
+  let user=req.session.user._id
+  userHelper.deleteWishlist(req.query.proId,user).then(()=>{
+    res.redirect('/shop')
+  })
+})
 
-// router.post('/add-profile',(req,res,next)=>{
-//   userHelper.addprofile(req.body).then(async(response)=>{
-//     let image=req.files.Image
-//     image.mv('./public/product-image/' + id + '.jpg',(err,done)=>{
-//       if (err) {
-//         reject(err);
-//       } else {
-//         resolve()
-//       }
-//     })
-//     res.redirect('/checkout-adress')
-//   })
-// })
-
-//payment page
-// router.get('/payment',(req,res)=>{
-//   res.render('users/payment',{footer:true,user:true})
-// })
 
 
 module.exports = router;

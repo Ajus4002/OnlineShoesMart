@@ -19,7 +19,7 @@ module.exports={
             callback(data.insertedId)
         })
     },
-    getAllProducts:(applyDiscount = true)=>{
+    getAllProducts:(applyDiscount = true, query = {})=>{
         return new Promise(async(resolve,reject)=>{
             let products=await db.get().collection(collection.PRODUCT_COLLECTION).aggregate([
                 {
@@ -30,7 +30,8 @@ module.exports={
                         as: "category"
                     }
                 },
-                {"$unwind": "$category"}
+                {"$unwind": "$category"},
+                { $match: query }
             ]).toArray()
 
             if (applyDiscount) {

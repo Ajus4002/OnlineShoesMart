@@ -53,11 +53,79 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="online">
                                 <label class="form-check-label" for="flexRadioDefault2">
-                                    Online Payment
-                                </label>
+                                    
+                                    <img src="/images/razor.png" alt="" style="width: 160px;">
+                                   </label>
                             </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="paypal">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Paypal
+                                   </label>
+                            </div>
+                                                   {{!-- <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="online">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Pay Pal
+                                </label>
+                            </div> --}}
 
-   <label class="form-check-label" for="flexRadioDefault2">
+                            <!---->
+    <div id="paypal-button-container"></div>
+
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=Adses3_PcDFGkl2uVTNfoLib1-hcTPblrbpuIYg23-CsPRK5j9LITubVe5DY1ZCRnSu5vDDqfOkPZShC&currency=USD"></script>
+
+    <script>
+        let paypalPaid = false
+
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                $('#flexRadioDefault3').prop('checked', true)
+                $('#flexRadioDefault2').prop('checked', false)
+                $('#flexRadioDefault1').prop('checked', false)
+
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: {{grandTotal}}
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+                    // Successful capture! For demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                    paypalPaid = true
+                    submitOrder()
+                    // Replace the above to show a success message within this page, e.g.
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+
+
+                            <!---->
+                            <style>
+                                .wallet{
+                                    padding: 20px;
+                                }
+                            </style>
+
+   <label class="form-check-label wallet" for="flexRadioDefault2">
                                     Wallet Amount
                                 </label>
                             <input type="number" style="width: 60%; mar" min="1" max="100"  class="form-control input-group date"  name="wallet_amount" id="wallet-amount"
@@ -110,16 +178,7 @@
 
 	<script>
 
-				function submitOrder() {
-				swal({
-  title: "Whoo Hooo!"<br>"Order Placed",
- 
-  icon: "success",
-  button: "Aww yiss!",
-});
 
- 
-}
 			</script>
 
 
@@ -137,10 +196,14 @@
             walletAmount: $('#wallet-amount').val()
         }
 
+        if (order.paymentType === 'paypal' && !paypalPaid) {
+            alert('Place payment on paypal')
+            return;
+        }
+
         $.post('/place-order', order, function (data) {
             if (data['success']) {
                 if (!data['payment']) {
-                   
                     location.href = '/success'
                 } else {
                     paynow(data['order'], data['payment'], data['user'])

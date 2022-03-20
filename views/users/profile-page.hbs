@@ -24,10 +24,7 @@
 <!---stylyyyee->
 -->
 <style>
-body {
-  background: whitesmoke;
-  font-family: 'Open Sans', sans-serif;
-}
+
 .container {
   max-width: 960px;
   margin: 30px auto;
@@ -124,24 +121,7 @@ $("#imageUpload").change(function() {
 </script>
 
 
-<!--PROFILFE PHOTO STYLE UPLOAD-->
-{{!-- <div class="container">
-    <h1>jQuery Image Upload 
-        <small>with preview</small>
-    </h1>
-    <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload"></label>
-        </div>
-        <div class="avatar-preview">
-            <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
-            </div>
-        </div>
-    </div>
-</div> --}}
 
-<!--END PROFILFE PHOTO UPLOAD-->
 
 
 <div class="container">
@@ -174,14 +154,11 @@ $("#imageUpload").change(function() {
                     </ul>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="card mb-3"  style="background-color: -webkit-linear-gradient(0deg, #7a30c7, #0085ff);
-    background-image: -webkit-linear-gradient(left, #7a30c7, #0085ff);
-    background-image: linear-gradient(90deg, #7a30c7, #0085ff);
-}; font-size:25px">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-3">
+            <div class="col-md-8" >
+                <div class="card mb-3"  style=" font-size:25px border:2px ">
+                    <div data-aos="zoom-out" class="card-body" >
+                        <div class="row "data-aos="zoom-out">
+                            <div class="col-sm-3" data-aos="zoom-in-left">
                                 <h6 class="mb-0">Full Name</h6>
                             </div>
                             <div class="col-sm-9 text-white">
@@ -228,6 +205,10 @@ $("#imageUpload").change(function() {
                          
                             <button class="btn btn-dark mt-3" onclick="copyFunction()">Copy the URL</button>
 						</div>
+
+                        
+
+                        
                         <script>
                            
           function copyFunction() {
@@ -270,7 +251,7 @@ $("#imageUpload").change(function() {
     body{
     color: #1a202c;
     text-align: left;
-    background-color: #b9c5c7;
+    background-color: #ffffff;
 }
 .main-body {
     padding: 15px;
