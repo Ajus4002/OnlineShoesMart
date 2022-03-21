@@ -1,16 +1,14 @@
-
-
 <body>
 	<!-- banner -->
- <div class="banner_top innerpage" id="home">
+	<div class="banner_top innerpage" id="home">
 		<div class="wrapper_top_w3layouts">
-			 <div class="header_agileits">
-				
+			<div class="header_agileits">
+
 			</div>
 		</div>
-		
+
 		<!-- //search -->
-		<div class="clearfix"></div> 
+		<div class="clearfix"></div>
 		<!-- /banner_inner -->
 		<div class="services-breadcrumb_w3ls_agileinfo">
 			<div class="inner_breadcrumb_agileits_w3">
@@ -24,7 +22,7 @@
 		<!-- //banner_inner -->
 	</div>
 
-	<!-- //banner --> 
+	<!-- //banner -->
 	<!-- top Products -->
 	<div class="ads-grid_shop">
 		<div class="shop_inner_inf">
@@ -40,7 +38,7 @@
 						<input type="submit" value=" ">
 					</form>
 				</div>
-	
+
 				<!-- //price range -->
 				<!--preference -->
 				<div class="left-side">
@@ -49,12 +47,12 @@
 						<li>
 							<a href="/shop"><span class="span">All</span></a>
 						</li>
-					{{#each category}}
+						{{#each category}}
 						<li>
 							<a href="/shop?c={{this._id}}"><span class="span">{{this.catname}}</span></a>
 						</li>
-					{{/each}}
-						
+						{{/each}}
+
 					</ul>
 				</div>
 				<!-- // preference -->
@@ -62,132 +60,143 @@
 				<!-- deals -->
 				{{!-- <div class="deal-leftmk left-side">
 					<h3 class="agileits-sear-head">Special Deals</h3>
-					
+
 					<div class="special-sec1">
 						<div class="col-xs-4 img-deals" style="width: 50px;">
 							<img src="/product-image/{{this._id}}.jpg" alt="">
-						{{!-- </div>
+							{{!--
+						</div>
 						<div class="col-xs-8 img-deal1">
 							<h3>Shuberry Heels</h3>
 							<a href="single.html">$180.00</a>
 						</div>
 						<div class="clearfix"></div>
 					</div> --}}
-				
-					
-{{!-- 					
-						<div class="clearfix"></div>
-					</div>
-				</div> 
-				 --}}
-				<!-- //deals -->
 
-			</div>
-			<!-- //product left -->
-			<!-- product right -->
-			<div class="left-ads-display col-md-9">
-				<div class="wrapper_top_shop">
-					<div class="col-md-6 shop_left">
-						<img src="images/banner3.jpg" alt="">
-					<h4 class="ccpn">Use this coupon get  {{showcoupon.discount}}%off</h4>
-						<h6>{{showcoupon.couponname}}</h6>
-					
-					</div>
-					<div class="col-md-6 shop_right">
-						<img src="images/banner2.jpg" alt="">
-						<h6>50% off</h6>
-					</div>
-					<div class="clearfix"></div>
-					<!-- product-sec1 -->
-					<div class="product-sec1">
-						<!--/mens-->
-														{{#each product}}
-						<div class="col-md-4 product-men">
-							  
-							<div class="product-shoe-info shoe">
 
-								<div class="men-pro-item">
-									<div class="men-thumb-item">
-										<img src="/product-image/{{this._id}}.jpg" alt="csagd">
-										<div class="men-cart-pro">
-											<div class="inner-men-cart-pro">
-												<a href="/preview-page?id={{this._id}}" class="link-product-add-cart">Quick View</a>
-											</div>
-										</div>
-										<span class="product-new-top">New</span>
-									</div>
-									<div class="item-info-product">
-										<h4>
-											<a href="single.html">{{this.name}} </a>
-										</h4>
-										<div class="info-product-price">
-											<div class="grid_meta">
-												<div class="product_price">
-													<div class="grid-price ">
-														<span class="money ">{{this.price}}</span>
-														 {{#if this.oldPrice}}<span class="money " style="text-decoration: line-through; color: gray">{{this.oldPrice}}</span>{{/if}}
-													</div>
-												</div>
-												<ul class="stars">
-													<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
-													<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
-												</ul>
-											</div>
-											<div class="shoe single-item hvr-outline-out">
-												<form  >
-													{{!-- <input type="hidden" name="cmd" value="_cart">
-													<input type="hidden" name="add" value="1">
-													<input type="hidden" name="shoe_item" value="Bella Toes">
-													<input type="hidden" name="amount" value="675.00"> --}}
-											<a href="/add-wishlist/{{this._id}}">	
-                                        {{#if isInWishList}}
-										<i class="fa fa-heart" style="font-size:22px;padding-left: 13rem !important;color: red;"></i>
-										{{else}}
-										<i class="fa fa-heart-o" style="font-size:22px;padding-left: 13rem !important;"></i>
-										{{/if}}
-										</a>
-													
-													
-													<button onclick="addToCart('{{this._id}}')" type="submit" class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus" aria-hidden="true" ></i>
-													</button>
-
-													<a href="#" data-toggle="modal" data-target="#myModal1"></a>
-												</form>
-
-											</div>
-										</div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-									
-							</div>
-							
-								
-						
-						</div>
-									{{/each}} 
-						
-						<div class="clearfix"></div>
-
-					</div>
-
-					<!-- //product-sec1 -->
-					<div class="col-md-6 shop_left shp">
-						<img src="images/banner4.jpg" alt="">
-						<h6>21% off</h6>
-					</div>
-					<div class="col-md-6 shop_right shp">
-						<img src="images/banner1.jpg" alt="">
-						<h6>31% off</h6>
-					</div>
+					{{!--
 					<div class="clearfix"></div>
 				</div>
 			</div>
-			<div class="clearfix"></div>
+			--}}
+			<!-- //deals -->
+
 		</div>
+		<!-- //product left -->
+		<!-- product right -->
+		<div class="left-ads-display col-md-9">
+			<div class="wrapper_top_shop">
+				<div class="col-md-6 shop_left">
+					<img src="images/banner3.jpg" alt="">
+					<h4 class="ccpn">Use this coupon get {{showcoupon.discount}}%off</h4>
+					<h6>{{showcoupon.couponname}}</h6>
+
+				</div>
+				<div class="col-md-6 shop_right">
+					<img src="images/banner2.jpg" alt="">
+					<h6>50% off</h6>
+				</div>
+				<div class="clearfix"></div>
+				<!-- product-sec1 -->
+				<div class="product-sec1">
+					<!--/mens-->
+					{{#each product}}
+					<div class="col-md-4 product-men">
+
+						<div class="product-shoe-info shoe">
+
+							<div class="men-pro-item">
+								<div class="men-thumb-item">
+									<img src="/product-image/{{this._id}}.jpg" alt="csagd">
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+											<a href="/preview-page?id={{this._id}}" class="link-product-add-cart">Quick
+												View</a>
+										</div>
+									</div>
+									<span class="product-new-top">New</span>
+								</div>
+								<div class="item-info-product">
+									<h4>
+										<a href="single.html">{{this.name}} </a>
+									</h4>
+									<div class="info-product-price">
+										<div class="grid_meta">
+											<div class="product_price">
+												<div class="grid-price ">
+													<span class="money ">{{this.price}}</span>
+													{{#if this.oldPrice}}<span class="money "
+														style="text-decoration: line-through; color: gray">{{this.oldPrice}}</span>{{/if}}
+												</div>
+
+												<a href="/add-wishlist/{{this._id}}">
+													{{#if isInWishList}}
+													<i class="fa fa-heart"
+														style="font-size:22px;padding-left: 13rem !important;color: red;"></i>
+													{{else}}
+													<i class="fa fa-heart-o"
+														style="font-size:22px;padding-left: 13rem !important;"></i>
+													{{/if}}
+												</a>
+											</div>
+											<ul class="stars">
+												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+												<li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a>
+												</li>
+												<li>	
+</li>
+												<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+											</ul>
+										</div>
+										<div class="shoe single-item hvr-outline-out">
+											<form>
+												{{!-- <input type="hidden" name="cmd" value="_cart">
+												<input type="hidden" name="add" value="1">
+												<input type="hidden" name="shoe_item" value="Bella Toes">
+												<input type="hidden" name="amount" value="675.00"> --}}
+											
+
+												<button onclick="addToCart('{{this._id}}')" type="submit"
+													class="shoe-cart pshoe-cart"><i class="fa fa-cart-plus"
+														aria-hidden="true"></i>
+												</button>
+
+												<a href="#" data-toggle="modal" data-target="#myModal1"></a>
+											</form>
+
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+
+						</div>
+
+
+
+					</div>
+					{{/each}}
+
+					<div class="clearfix"></div>
+
+				</div>
+
+				<!-- //product-sec1 -->
+				<div class="col-md-6 shop_left shp">
+					<img src="images/banner4.jpg" alt="">
+					<h6>21% off</h6>
+				</div>
+				<div class="col-md-6 shop_right shp">
+					<img src="images/banner1.jpg" alt="">
+					<h6>31% off</h6>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
 	</div>
 	<!-- //top products -->
 	<div class="mid_slider_w3lsagile">
@@ -207,76 +216,92 @@
 					<div class="item">
 						<div class="row">
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g1.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g1.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g2.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g2.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g3.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g3.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g4.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g4.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="item active">
 						<div class="row">
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g5.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g5.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g6.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g6.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g2.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g2.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g1.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="row">
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g1.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g2.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g3.jpg" alt="Image" style="max-width:100%;"></div>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g4.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g1.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="item">
 						<div class="row">
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g1.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g1.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g2.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g2.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g3.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g3.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
-								<div class="thumbnail"><img src="images/g4.jpg" alt="Image" style="max-width:100%;"></div>
+								<div class="thumbnail"><img src="images/g4.jpg" alt="Image" style="max-width:100%;">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="item">
+						<div class="row">
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="images/g1.jpg" alt="Image" style="max-width:100%;">
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="images/g2.jpg" alt="Image" style="max-width:100%;">
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="images/g3.jpg" alt="Image" style="max-width:100%;">
+								</div>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 slidering">
+								<div class="thumbnail"><img src="images/g4.jpg" alt="Image" style="max-width:100%;">
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-			<span class="fa fa-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
+					<span class="fa fa-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
 				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-			<span class="fa fa-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
+					<span class="fa fa-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
 				<!-- The Modal -->
 
 			</div>
@@ -299,59 +324,59 @@
 		<div class="clearfix"></div>
 	</div>
 	<!-- //newsletter-->
-<script>
-	function addToWishlet(proId,userId){
-  if(userId==''){
-    swal("Please Login to Wishlist").then(()=>{
-        return false;
-    })
-  }else{
-      $('#'+proId).hide()
-      $('#heart-'+proId).show()
-      $.ajax({
-      url:'/add-to-wishlet?proId='+proId+'&userId='+userId,
-      method:'get',
-      success:(res)=>{
-          if(res.status){
-              Swal.fire({
-              toast: true,
-              icon: 'success',
-              title: 'Added to Wishlist',
-              animation: false,
-              position: 'bottom',
-              showConfirmButton: false,
-              timer: 1000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }
-              })
-          }else{
-              $('#'+proId).show()
-              $('#heart-'+proId).hide()
-          }
-          if(res.already){
-              $('#'+proId).show()
-              $('#heart-'+proId).hide()
-              Swal.fire({
-              toast: true,
-              title: 'Removed from Wishlist',
-              icon: 'error',
-              animation: false,
-              position: 'bottom',
-              showConfirmButton: false,
-              timer: 1000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }
-              })
-          }
-      }
-      })
-  }
- 
-}
-</script>
+	<script>
+		function addToWishlet(proId, userId) {
+			if (userId == '') {
+				swal("Please Login to Wishlist").then(() => {
+					return false;
+				})
+			} else {
+				$('#' + proId).hide()
+				$('#heart-' + proId).show()
+				$.ajax({
+					url: '/add-to-wishlet?proId=' + proId + '&userId=' + userId,
+					method: 'get',
+					success: (res) => {
+						if (res.status) {
+							Swal.fire({
+								toast: true,
+								icon: 'success',
+								title: 'Added to Wishlist',
+								animation: false,
+								position: 'bottom',
+								showConfirmButton: false,
+								timer: 1000,
+								timerProgressBar: true,
+								didOpen: (toast) => {
+									toast.addEventListener('mouseenter', Swal.stopTimer)
+									toast.addEventListener('mouseleave', Swal.resumeTimer)
+								}
+							})
+						} else {
+							$('#' + proId).show()
+							$('#heart-' + proId).hide()
+						}
+						if (res.already) {
+							$('#' + proId).show()
+							$('#heart-' + proId).hide()
+							Swal.fire({
+								toast: true,
+								title: 'Removed from Wishlist',
+								icon: 'error',
+								animation: false,
+								position: 'bottom',
+								showConfirmButton: false,
+								timer: 1000,
+								timerProgressBar: true,
+								didOpen: (toast) => {
+									toast.addEventListener('mouseenter', Swal.stopTimer)
+									toast.addEventListener('mouseleave', Swal.resumeTimer)
+								}
+							})
+						}
+					}
+				})
+			}
+
+		}
+	</script>
