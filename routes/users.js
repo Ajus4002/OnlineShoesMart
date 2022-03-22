@@ -232,7 +232,7 @@ router.get('/checkout-adress', verifyLogin,async(req,res)=>{
     coupon=await couponHelpers.getCoupon(req.session.coupon)
   }
 
-  addressHelpers.getAllAddress().then(async (address) => {
+  addressHelpers.getAllAddress(req.session.user._id).then(async (address) => {
 
   let total = products.reduce((acc, v) => acc + parseFloat(v.product.price) * parseInt(v.quantity), 0);
   let grandTotal=total

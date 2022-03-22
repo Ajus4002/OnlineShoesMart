@@ -12,9 +12,10 @@ module.exports={
             })
         })
     },
-    getAllAddress:()=>{
+    getAllAddress:(userId)=>{
         return new Promise(async(resolve,reject)=>{
-        let adress=await db.get().collection(collection.ADDRESS_COLLECTION).find().toArray()
+        let adress=await db.get().collection(collection.ADDRESS_COLLECTION).find({userId:ObjectId(userId)}).toArray()
+        console.log(adress);
         resolve(adress)
         })
         
