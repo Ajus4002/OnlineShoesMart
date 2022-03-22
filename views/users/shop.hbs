@@ -129,15 +129,7 @@
 														style="text-decoration: line-through; color: gray">{{this.oldPrice}}</span>{{/if}}
 												</div>
 
-												<a href="/add-wishlist/{{this._id}}">
-													{{#if isInWishList}}
-													<i class="fa fa-heart"
-														style="font-size:22px;padding-left: 13rem !important;color: red;"></i>
-													{{else}}
-													<i class="fa fa-heart-o"
-														style="font-size:22px;padding-left: 13rem !important;"></i>
-													{{/if}}
-												</a>
+											
 											</div>
 											<ul class="stars">
 												<li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
@@ -147,7 +139,15 @@
 												</li>
 												<li>	
 </li>
-												<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+												<li>	<a href="/add-wishlist/{{this._id}}">
+													{{#if isInWishList}}
+													<i class="fa fa-heart"
+														style="font-size:22px;padding-left: 13rem !important;color: red;"></i>
+													{{else}}
+													<i class="fa fa-heart-o"
+														style="font-size:22px;padding-left: 13rem !important;"></i>
+													{{/if}}
+												</a></li>
 											</ul>
 										</div>
 										<div class="shoe single-item hvr-outline-out">
